@@ -1,8 +1,13 @@
+''' Get a defenition of a word from Merriam Webster based on user input.
+This script uses Dictionary API by Merriam Webster to access the information about a given word
+'''
+
+# Native libraries
 import sys
 import urllib2
 import xml.etree.cElementTree as Et
 
-
+# Gets the raw XML data from the api, sends it to xml_parse and returns the clean results as a dict.
 def dictionary_info(query, api_key):
     try:
         data = urllib2.urlopen('http://www.dictionaryapi.com/api/v1/references/collegiate/xml/{}?key={}'.format(query, api_key))
@@ -15,7 +20,7 @@ def dictionary_info(query, api_key):
     parsed_result = xml_parse(query, xml_string)
     return parsed_result
 
-
+# Extracts specific entities from the raw XML data and returns results as a dict depending on the type of page returned.
 def xml_parse(query, xml_string):
 
     root = Et.fromstring(xml_string)
@@ -59,7 +64,7 @@ def xml_parse(query, xml_string):
                 pass
         return suggest_dict
 
-
+# Prints the final results to the terminal screen.
 def display_output(page_result):
 
     if page_result['type'] == "entry":
