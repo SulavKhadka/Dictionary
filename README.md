@@ -1,5 +1,7 @@
 # Dictionary
 
+Still Pre-alpha.
+
 A very simple python module that gives the user the definition of a given word. Works from command line or can be used to integrate into another project.
 
 This script is a part of a bigger project I have called CHESTER. Currently I am using this as a part of the CHESTER Knowledgebase.
@@ -14,14 +16,11 @@ dictionaryapi.com api key: http://www.dictionaryapi.com/register/index.htm
 
 **Command line:**
 ```
-python Weather.py fullReport
-python Weather.py shortReport
+python Dictionary.py *word*
 ```
 **Code Integration:**
 ```
-import Weather
-print Weather.generate_report(fullReport, API_KEY) #Gets full weather report
-print Weather.generate_report(shortReport, API_KEY) #Gets basic weather report
-A simple dictionary module made in python.
-
-*Still Pre-alpha*
+import Dictionary
+output_dict = Dictionary.dictionary_info(query, API_KEY) #gets parsed info from the dictionary api
+Dictionary.display_output(output_dict) #prints the results from output_dict 
+```
