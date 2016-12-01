@@ -1,5 +1,6 @@
+import sys
 import urllib2
-import xml.etree.cElementTree as ET
+import xml.etree.cElementTree as Et
 
 
 def dictionary_info(query, api_key):
@@ -17,7 +18,7 @@ def dictionary_info(query, api_key):
 
 def xml_parse(query, xml_string):
 
-    root = ET.fromstring(xml_string)
+    root = Et.fromstring(xml_string)
     try:
         page_tag = root[0].tag
     except IndexError:
@@ -76,13 +77,10 @@ def display_output(page_result):
         print page_result['text']
 
 
-def main():
-    word = raw_input('Enter a word to lookup: ')
-    api_key = "94125589-6e52-4cbe-a6f8-b8ae5b3bed42"
-    output_dict = dictionary_info(word, api_key)
-    display_output(output_dict)
-
-main()
-
-
-
+if __name__ == '__main__':
+    API_KEY = raw_input("Please enter your merriam webster dictionary api key:")
+    if len(sys.argv) != 2:
+        print("{} of 2 Argument(s) found. Please enter the word you wish to search as argument".format(sys.argv))
+    else:
+        output_dict = dictionary_info(sys.argv[1], API_KEY)
+        display_output(output_dict)
