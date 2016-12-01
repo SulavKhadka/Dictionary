@@ -21,7 +21,6 @@ python Dictionary.py *word*
 **Code Integration:**
 ```
 import Dictionary
-
-output_dict = Dictionary.dictionary_info(query, API_KEY)        #gets parsed info from the dictionary api
-Dictionary.display_output(output_dict)        #prints the results from output_dict 
+output_dict = Dictionary.dictionary_info(query, API_KEY)#gets parsed info from the dictionary api
+Dictionary.display_output(output_dict)#prints the results from output_dict 
 ```
